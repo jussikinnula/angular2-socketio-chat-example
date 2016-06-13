@@ -32,14 +32,13 @@ export class AppComponent {
             this.items.push(item);
         });
         this.socket.on("disconnect", () => {
-            this.connected = false;
-            // Just don"t try to reconnected, when connection was interrupted
-            this.socket.disconnect();
+            this.disconnect();
         });
     }
 
     disconnect() {
         this.connected = false;
+        // Just don't try to reconnect, when connection was interrupted
         this.socket.disconnect();
     }
 
